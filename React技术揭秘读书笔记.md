@@ -1,0 +1,14 @@
+# React技术揭秘读书笔记
+
+## 理念篇
+
+GUI渲染线程与JS线程是互斥的，16.6ms浏览器刷新一次。React把长任务拆到每一帧中运行（时间切片），每一帧预留5ms左右，剩余时间交由渲染UI。
+
+时间切片：将同步的更新变为可中断的异步更新。
+
+React16.8采用了Fiber架构，做到了可中断的执行对变化组件做update标记，该行为在内存中进行，等到完成后通知更新渲染
+
+## 资料
+
+- [React技术揭秘](https://react.iamkasong.com/)
+- [React Fiber 架构介绍](https://github.com/luxp/react-fiber-architecture-cn)
