@@ -9,3 +9,5 @@ dist/js/*
 dist-/*
 dist/ts/*
 snippet.js
+
+yarn.lock
