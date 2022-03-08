@@ -8,25 +8,15 @@
   </head>
   <body>
     <script>
-      //   function factorial(n) {
-      //     console.trace()
-      //     if (n === 0) {
-      //       return 1
-      //     }
-      //     return n * factorial(n - 1)
-      //   }
+      function C() {}
 
-      //   factorial(5)
+      let o = new C()
 
-      function testNull(val) {
-        console.log(val, val != null)
-        if (val != null) {
-          console.log(val)
-        }
-      }
+      console.log(o instanceof C) // true，因为 Object.getPrototypeOf(o) === C.prototype
+      console.log(o instanceof Object) // true，因为 Object.prototype.isPrototypeOf(o) 返回 true
+      console.log(C.prototype)
 
-      testNull(null)
-      testNull(undefined)
+      Array.isArray([])
     </script>
   </body>
 </html>
