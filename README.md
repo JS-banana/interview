@@ -5,9 +5,10 @@
 ## 方向
 
 - JavaScript基础
-  - 类型与判断
-  - 原型链
-  - 作用域与闭包
+  - [x] [执行上下文](JavaScript/执行上下文.md)
+  - [x] [作用域与闭包](JavaScript/作用域与闭包.md)
+  - [x] [类型与判断与类型转换](JavaScript/类型与判断.md)
+  - [x] [原型链](JavaScript/原型.md)
 - ES6
 - webpack
 - React

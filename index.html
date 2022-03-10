@@ -8,17 +8,19 @@
   </head>
   <body>
     <script>
-      foo()
+      var value = 1
 
-      var foo = function foo() {
-        console.log('foo1')
+      var foo = {
+        value: 2,
+        bar: function () {
+          return this.value
+        },
       }
 
-      function foo() {
-        console.log('foo2')
-      }
-
-      foo()
+      //示例1
+      console.log(foo.bar())
+      //示例2
+      console.log((foo.bar = foo.bar)())
     </script>
   </body>
 </html>
