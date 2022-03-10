@@ -8,15 +8,17 @@
   </head>
   <body>
     <script>
-      if (true) {
-        var a = 1
-      }
-      console.log(a) // 1
+      foo()
 
-      if (true) {
-        let a = 1
+      var foo = function foo() {
+        console.log('foo1')
       }
-      console.log(a) // ReferenceError
+
+      function foo() {
+        console.log('foo2')
+      }
+
+      foo()
     </script>
   </body>
 </html>
