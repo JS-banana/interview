@@ -10,6 +10,8 @@
   - [x] [类型与判断与类型转换](JavaScript/类型与判断.md)
   - [x] [原型链](JavaScript/原型.md)
 - ES6
+  - [x] [块级作用域](ES6/块级作用域.md)
+  - [x] [函数](ES6/函数.md)
 - webpack
 - React
 - 浏览器
@@ -17,14 +19,14 @@
 
 ## 看书
 
-《JavaScript高级程序设计》
-《你不知道的JavaScript》
-《学习JavaScript数据结构与算法》
-《算法小抄》
-《深入理解ES6》
-《HTTP权威指南》
-《React技术揭秘》
-《图解React》
+- [ ] 《JavaScript高级程序设计》
+- [ ] 《你不知道的JavaScript》
+- [ ] 《学习JavaScript数据结构与算法》
+- [ ] 《算法小抄》
+- [x] 《深入理解ES6》
+- [ ] 《HTTP权威指南》
+- [x] 《React技术揭秘》
+- [ ] 《图解React原理》
 
 ## 整理
 
