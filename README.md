@@ -27,21 +27,15 @@
 
 - [ ] 《JavaScript高级程序设计》
 - [ ] 《你不知道的JavaScript》
-- [ ] 《学习JavaScript数据结构与算法》
+- [x] 《学习JavaScript数据结构与算法》
 - [ ] 《算法小抄》
 - [x] 《深入理解ES6》
-- [ ] 《HTTP权威指南》
-- [ ] 《图解网络-小林coding》
+- [x] 《图解网络-小林coding》
 - [x] 《React技术揭秘》
 - [ ] 《图解React原理》
 
-## 整理
+## 推荐阅读
 
-- [面试宝库](一些不太全的知识点.md)
-- [反问面试官](反问面试官.md)
-- [内推资源](内推资源.md)
-
-## 相关文章
-
+- [面试宝库](/整理/一些不太全的知识点.md)
 - [做了一份前端面试复习计划，保熟～](https://juejin.cn/post/7061588533214969892)
 - [📚 开发者推荐阅读的书籍](https://github.com/guanpengchn/awesome-books)
