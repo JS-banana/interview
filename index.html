@@ -8,36 +8,28 @@
   </head>
   <body>
     <script>
-      class Polygon {
-        constructor(height, width) {
-          this.name = 'Rectangle'
-          this.height = height
-          this.width = width
-          console.log('Polygon constructor', height, width)
+      function run(taskDef) {
+        // 创建迭代器，让它在别处可用
+        let task = taskDef()
+        // 启动任务
+        let result = task.next()
+        // 递归使用函数来保持对 next() 的调用
+        function step() {
+          // 如果还有更多要做的
+          if (!result.done) {
+            result = task.next(result.value)
+            step()
+          }
         }
-        sayName() {
-          console.log('Hi, I am a ', this.name + '.')
-        }
+        // 开始处理过程
+        step()
       }
-
-      class Square extends Polygon {
-        constructor(length) {
-          // 这里，它调用父类的构造函数的,
-          // 作为Polygon 的 height, width
-          console.log('super')
-          super(length, 5)
-
-          // 注意: 在派生的类中, 在你可以使用'this'之前, 必须先调用super()。
-          // 忽略这, 这将导致引用错误。
-          this.name = 'Square'
-
-          console.log('super()')
-          super.sayName()
-        }
-      }
-
-      const fn = new Square(2)
-      console.log(fn.name)
+      run(function* () {
+        let value = yield 1
+        console.log(value) // 1
+        value = yield value + 3
+        console.log(value) // 4
+      })
     </script>
   </body>
 </html>
