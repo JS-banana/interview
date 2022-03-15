@@ -26,7 +26,7 @@ console.log(person instanceof Object) // true
 
 ## ES6的类
 
-使用类语法能够少写大量的代码
+使用类语法 `class`能够少写大量的代码
 
 ```js
 class PersonClass {
@@ -54,21 +54,21 @@ console.log(typeof PersonClass.prototype.sayName) // "function"
 
 > 自有属性（ Own properties ）：该属性出现在实例上而不是原型上，只能在类的构造器或方法内部进行创建。
 
-简单描述：
+简单分析：
 
-- class类声明其实是个以自定义类型声明为基础的语法糖
+- `class`类声明其实是个以自定义类型声明为基础的语法糖
 - 可以把自定义类型声明与类混合使用
 
 ## 相似与区别
 
-- 类声明不会被提升，这与函数定义不同。（类声明的行为与 `let` 相似，因此在程序的执行到达声明处之前，类会存在于暂时性死区内）
-- 类声明中的所有代码会自动运行在严格模式下，并且也无法退出严格模式
-- 类的所有方法都是不可枚举的，这是对于自定义类型的显著变化，后者必须用 `Object.defineProperty()` 才能将方法改变为不可枚举
+- 类声明不会被提升，这与函数定义不同。（类声明的行为与 `let` 相似，因此在程序的执行到达声明处之前，类会存在于**暂时性死区**内）
+- 类声明中的所有代码会自动运行在**严格模式**下，并且也无法退出严格模式
+- 类的所有方法都是**不可枚举*的，这是对于自定义类型的显著变化，后者必须用 `Object.defineProperty()` 才能将方法改变为不可枚举
 - 类的所有方法内部都没有 `[[Construct]]` ，因此使用 `new` 来调用它们会抛出错误
 - 调用类构造器时不使用 `new` ，会抛出错误
 - 试图在类的方法内部重写类名，会抛出错误
 
-这样看来，上例中的 PersonClass 声明实际上就直接等价于以下未使用类语法的代码：
+这样看来，上例中的 `PersonClass` 声明实际上就直接等价于以下未使用类语法的代码：
 
 ```js
 // 直接等价于 PersonClass
@@ -99,13 +99,13 @@ let PersonType2 = (function () {
 
 注意：
 
-这里有两个 PersonType2 声明：一个在外部作用域的 let 声明，一个在 IIFE 内部的 const 声明。这就是为何类的方法不能对类名进行重写、而类外部的代码则被允许对类名进行重写的原因。
+这里有两个 `PersonType2` 声明：一个在外部作用域的 `let` 声明，一个在 `IIFE` 内部的 `const` 声明。这就是为何类的方法不能对类名进行重写、而类外部的代码则被允许对类名进行重写的原因。
 
 再结合下面例子，分析类名是否可以重写的原因：
 
-- 类构造器内部的 Foo 与在类外部的 Foo 是不同的绑定
-  - 内部的 Foo 就像是用 const 定义的，不能被重写
-  - 外部的 Foo 就像是用 let 声明的，可以随时重写类名
+- 类构造器内部的 `Foo` 与在类外部的 `Foo` 是不同的绑定
+  - 内部的 `Foo` 就像是用 `const` 定义的，不能被重写
+  - 外部的 `Foo` 就像是用 `let` 声明的，可以随时重写类名
 
 ```js
 class Foo {
@@ -120,19 +120,21 @@ Foo = "baz";
 ## 其他特点
 
 - 作为一级公民的类
-- 访问器属性（ getter 和 setter ）
+- 访问器属性（ `getter` 和 `setter` ）
 - 生成器方法 `*[Symbol.iterator]()`
-- 静态成员
+- 静态成员（`static`）
 
 ### 作为一级公民的类
 
-在编程中，能被当作值来使用的就称为一级公民（ first-class citizen ）
+在编程中，能被**当作值来使用**的就称为一级公民（ first-class citizen ）
 
-这意味着意味着它能作为参数传给函数、能作为函数返回值、能用来给变量赋值。
+这意味着意味着它能**作为参数**传给函数、能**作为函数返回值**、能用来**给变量赋值**。
 
-JS的函数就是一级公民（它们有时又被称为一级函数），此特性让 JS 独一无二。
+**JS的函数就是一级公民**（它们有时又被称为一级函数），此特性让 JS 独一无二。
 
 ### 访问器属性
+
+`getter` 和 `setter` => `get` 和 `set`
 
 ```js
 class CustomHTMLElement {
@@ -150,6 +152,8 @@ class CustomHTMLElement {
 
 ### 生成器方法
 
+`Symbol.iterator`
+
 ```js
 class Collection {
     constructor() {
@@ -163,7 +167,7 @@ class Collection {
 
 ### 静态成员
 
-在 ES5 及更早版本中是通过直接在构造器上添加额外方法来模拟静态成员
+在 ES5 及更早版本中是通过**直接在构造器上添加额外方法**来模拟静态成员
 
 ```js
 function PersonType(name) {
@@ -180,7 +184,7 @@ PersonType.prototype.sayName = function () {
 var person = PersonType.create('Nicholas')
 ```
 
-ES6 的类简化了静态成员的创建，只要在方法与访问器属性的名称前添加正式的 static 标注
+ES6 的类简化了静态成员的创建，**只要在方法与访问器属性的名称前添加正式的 static 标注**
 
 ```js
 class PersonClass {
@@ -208,7 +212,7 @@ console.log(typeof PersonClass.create) // function
 
 ## 使用派生类进行继承
 
-ES6 class类使用 extends 关键字实现继承
+ES6 `class`类使用 `extends` 关键字实现继承
 
 好处是用法更简单、更容易理解，避免出错。
 
@@ -216,7 +220,7 @@ ES6 class类使用 extends 关键字实现继承
 
 对比下两种继承方式：
 
-ES5 的继承，ES6 之前，实现自定义类型的继承是个繁琐的过程。严格的继承要求有多个步骤，如下：
+ES5 的继承（ES6 之前），实现自定义类型的继承是个繁琐的过程。严格的继承要求有多个步骤，如下：
 
 ```js
 function Rectangle(length, width) {
@@ -284,14 +288,14 @@ console.log(square instanceof Square) // true
 console.log(square instanceof Rectangle) // true
 ```
 
-注意：super()是调用父类的构造函数，但属性是绑定到当前实例上的
+注意：`super()`是调用**父类**的构造函数，但属性是绑定到**当前实例**上的
 
 **什么是派生类**：
 
-继承了其他类的类被称为派生类（ derived classes ）
+`继承了其他类的类`被称为派生类（ derived classes ）
 
 - 如果派生类指定了构造器，就需要使用 `super()` ，否则会造成错误
-- 若你选择不使用构造器， `super()` 方法会被自动调用，并会使用创建新实例时提供的所有参数
+- 若你选择不使用构造器， `super()` 方法会被**自动调用**，并会使用创建新实例时提供的**所有参数**
 
 ```js
 class Square extends Rectangle {
@@ -313,7 +317,7 @@ class Square extends Rectangle {
 
 ### 屏蔽类方法
 
-派生类中的方法总是会屏蔽基类的同名方法，如下：
+派生类中的方法总是会**屏蔽**基类的**同名方法**，如下：
 
 ```js
 class Square extends Rectangle {
@@ -347,7 +351,7 @@ class Square extends Rectangle {
 
 如果基类包含静态成员，那么这些静态成员在派生类中也是可用的
 
-不过使用方式是类似的，即 静态成员不能用实例来访问，你始终需要直接用类自身来访问它们
+不过使用方式是类似的，即 **静态成员不能用实例来访问，你始终需要直接用类自身来访问它们**
 
 ```js
 class Rectangle {
@@ -379,7 +383,7 @@ console.log(length instanceof Square) // false
 
 在 ES6 中派生类的最强大能力，或许就是能够从表达式中派生类。
 
-只要一个表达式能够返回一个具有 `[[Construct]]` 属性以及原型的函数，你就可以对其使用 `extends` 。
+只要一个表达式能够返回一个具有 `[[Construct]]` 属性以及`原型`的函数，你就可以对其使用 `extends` 。
 
 简单分析下：
 
@@ -426,7 +430,7 @@ console.log(x.getArea()) // 9
 console.log(x instanceof Rectangle) // true
 ```
 
-这里的 `Rectangle`完全可以换成一个动态可执行函数，可以动态地决定基类，进而实现更丰富的功能拓展
+再进一步拓展 一下，这里的 `Rectangle`完全可以换成一个**动态可执行函数**，可以动态地决定基类，进而实现更丰富的功能拓展
 
 ```js
 function getBase() {
@@ -470,7 +474,7 @@ console.log(x.getArea()) // 9
 console.log(x.serialize()) // "{"length":3,"width":3}"
 ```
 
-此例使用了混入（ mixin ）而不是传统继承。`mixin()` 函数接受代表混入对象的任意数量的参数，它创建了一个名为 `base` 的函数，并将每个混入对象的属性都赋值到新函数的原型上。
+此例使用了混入（ mixin ）而不是传统继承。`mixin()` 函数接受代表混入对象的任意数量的参数，它创建了一个名为 `base` 的函数，并将每个混入对象的属性都赋值到**新函数的原型上**。
 
 任意表达式都能在 `extends` 关键字后使用，但并非所有表达式的结果都是一个有效的类。特别的，下列表达式类型会导致错误：
 
@@ -481,7 +485,7 @@ console.log(x.serialize()) // "{"length":3,"width":3}"
 
 ### 继承内置对象
 
-ES6 中的类允许从内置对象上进行继承的。
+ES6 中的类允许从**内置对象**上进行继承。
 
 **ES5的继承写法**：
 
@@ -516,7 +520,7 @@ colors.length = 0
 console.log(colors[0]) // "red"
 ```
 
-可以看到代码尾部的输出不符合预期，因为length等功能并未被涵盖在 Array.apply() 或数组原型中。
+可以看到代码尾部的输出不符合预期，因为 `length`等属性并未被涵盖在 `Array.apply()` 或数组原型中。
 
 **ES6 的继承写法**：
 
@@ -534,7 +538,7 @@ console.log(colors[0]) // undefined
 
 可以看到是符合预期的。
 
-MyArray 直接继承了 Array ，因此工作方式与正规数组一致
+`MyArray` 直接继承了 `Array` ，因此工作方式与正规数组一致
 
 **ES6对比ES5的继承分析**：
 
@@ -553,7 +557,7 @@ class MyArray extends Array {
   // 空代码块
 }
 let items = new MyArray(1, 2, 3, 4),
-  subitems = items.slice(1, 3)
+  subitems = items.slice(1, 3) // 注意这里的 slice方法
   
 console.log(items instanceof MyArray) // true
 console.log(subitems instanceof MyArray) // true
@@ -561,7 +565,7 @@ console.log(subitems instanceof MyArray) // true
 
 在此代码中， `slice()` 方法返回了 MyArray 的一个实例。 `slice()` 方法是从 `Array` 上继承的，原本应当返回 `Array` 的一个实例。而 `Symbol.species` 属性在后台造成了这种变化。
 
-Symbol.species 符号被用于定义一个能返回函数的静态访问器属性。即 每当类实例的方法（构造器除外）必须创建一个实例时，前面返回的函数就被用为新实例的构造器。
+`Symbol.species` 符号被用于定义一个能返回函数的**静态访问器属性**。即 每当类实例的方法（构造器除外）必须创建一个实例时，前面返回的函数就被用为新实例的构造器。
 
 下列内置类型都定义了 `Symbol.species`：
 
@@ -661,3 +665,7 @@ var obj = new Square(3) // 输出 false
 - 类构造器被调用时不能缺少 `new`，确保了不能意外地将类作为函数来调用
 - 基于类的继承允许你从另一个类、函数或表达式上派生新的类
 - 可以实现对内置对象的继承（例如数组）
+
+## 资料
+
+- 《深入理解ES6》
