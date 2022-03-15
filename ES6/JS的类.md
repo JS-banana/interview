@@ -6,6 +6,8 @@ JS 在 ES5 及更早版本中都不存在 `class`类。
 
 需要说明一点的是：`class` 只是原型链的语法糖，与其它语言中的类不是同一样东西。
 
+ES6 的 `class` 继承在 `babel` 转义后，底层是使用的寄生组合继承的方式实现的。
+
 ES5模仿类的方式是通过构造函数来实现：
 
 ```js
@@ -259,7 +261,7 @@ console.log(square instanceof Square) // true
 console.log(square instanceof Rectangle) // true
 ```
 
-这种写法繁琐、易错，让人难以理解，而ES6的写法则优雅很多：
+这种写法也叫作**寄生组合继承**，不过其仍然是繁琐、易错，让人难以理解，而ES6的 class写法则优雅很多：
 
 ```js
 class Rectangle {
