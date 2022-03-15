@@ -12,7 +12,7 @@
   - [x] [执行上下文](JavaScript/执行上下文.md)
   - [x] [作用域与闭包](JavaScript/作用域与闭包.md)
   - [x] [类型与判断与类型转换](JavaScript/类型与判断.md)
-  - [x] [原型链](JavaScript/原型.md)
+  - [x] [原型链（配合ES6的class一起食用更佳）](JavaScript/原型.md)
 - ES6
   - [x] [块级作用域](ES6/块级作用域.md)
   - [x] [函数](ES6/函数.md)
