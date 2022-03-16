@@ -249,6 +249,6 @@ UDP 发生是不管顺序，也不管丢包的，所以不会出现 HTTP/1.1 的
 
 ## HTTP总结
 
-目前着重理解HTTP1.1以及HTTP/2，对于HTTP/3现阶段可以了解
+就普及程度及市场情况来说，目前着重理解HTTP1.1、HTTPS以及HTTP/2，对于HTTP/3现阶段可以只做了解即可
 
 ![HTTP-update](/static/images/http-update.jpg)
