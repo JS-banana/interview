@@ -18,7 +18,8 @@
   - [x] [函数](ES6/函数.md)
   - [x] [Map、Set、WeakMap、WeakSet](/ES6/Map与Set和WeakMap与WeakSet.md)
   - [x] [迭代器iterator与生成器generator](ES6/迭代器与生成器.md)
-  - [x] [JS的类-class](ES6/JS的类.md)
+  - [x] [JS的类-class（建议配合原型链一章一起食用）](ES6/JS的类.md)
+  - [x] [ES6数组新增方法](ES6/数组.md)
 - webpack
 - React
 - 浏览器

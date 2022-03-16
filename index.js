@@ -1,14 +1,11 @@
-class Rectangle {
-  constructor(length, width) {
-    console.log(new.target === Rectangle)
-    this.length = length
-    this.width = width
-  }
+const arr = [1, [[2], 3, 4], 5]
+
+const flatten = (arr) => {
+  return arr.reduce((flat, toFlat) => {
+    return flat.concat(Array.isArray(toFlat) ? flatten(toFlat) : toFlat)
+  }, [])
 }
-class Square extends Rectangle {
-  constructor(length) {
-    super(length, length)
-  }
-}
-// new.target 就是 Square
-var obj = new Square(3) // 输出 false
+
+const res = flatten(arr)
+
+console.log(res)
