@@ -1,11 +1,19 @@
-const arr = [1, [[2], 3, 4], 5]
-
-const flatten = (arr) => {
-  return arr.reduce((flat, toFlat) => {
-    return flat.concat(Array.isArray(toFlat) ? flatten(toFlat) : toFlat)
-  }, [])
+class MyPromise extends Promise {
+  // 使用默认构造器
+  success(resolve, reject) {
+    return this.then(resolve, reject)
+  }
+  failure(reject) {
+    return this.catch(reject)
+  }
 }
-
-const res = flatten(arr)
-
-console.log(res)
+let promise = new MyPromise(function (resolve, reject) {
+  resolve(42)
+})
+promise
+  .success(function (value) {
+    console.log(value) // 42
+  })
+  .failure(function (value) {
+    console.log(value)
+  })

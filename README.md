@@ -20,6 +20,7 @@
   - [x] [迭代器iterator与生成器generator](ES6/迭代器与生成器.md)
   - [x] [JS的类-class（建议配合原型链一章一起食用）](ES6/JS的类.md)
   - [x] [ES6数组新增方法](ES6/数组.md)
+  - [x] [Promise与异步编程](ES6/Promise与异步编程.md)
 - webpack
 - React
 - 浏览器
