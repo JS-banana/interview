@@ -21,8 +21,11 @@
   - [x] [JS的类-class（建议配合原型链一章一起食用）](ES6/JS的类.md)
   - [x] [ES6数组新增方法](ES6/数组.md)
   - [x] [Promise与异步编程](ES6/Promise与异步编程.md)
-- webpack
-- React
+- React：能清晰阐述其运行逻辑和原理，Fiber流程
+  - [x] [React及Fiber流程和相关分析](React/React及Fiber.md)
+  - [x] [常用Hook分析](React/常用Hook分析.md.md)
+- Vue：能清晰阐述其运行逻辑和原理，初始化流程及响应式原理
+- webpack：能清晰阐述其运行逻辑和原理，生命周期流程
 - 浏览器
   - [x] [从输入URL到页面加载完成的过程](/浏览器/从输入URL到页面加载完成的过程.md)
   - [x] [JavaScript运行机制](/浏览器/JavaScript运行机制.md)
@@ -32,6 +35,7 @@
   - [x] [域名解析的工作流程](/网络/IP基础知识.md)
   - [x] [状态码](/网络/状态码.md)
 - 算法和刷题
+  - [ ] 数据结构了解
 
 ## 看书
 
@@ -42,7 +46,7 @@
 - [x] 《深入理解ES6》
 - [x] 《图解网络-小林coding》
 - [x] 《React技术揭秘》
-- [ ] 《图解React原理》
+- [x] 《图解React原理》
 
 ## 推荐阅读
 
@@ -51,3 +55,4 @@
 - [📚 开发者推荐阅读的书籍](https://github.com/guanpengchn/awesome-books)
 - [100道 JavaScript 面试题，助你查漏补缺](https://juejin.cn/post/6992525007716876325)
 - [前端杂烩 - Web前端阅读资源汇总](https://juejin.cn/post/7069468539412807693)
+- [手写各种js](https://github.com/qianlongo/fe-handwriting)

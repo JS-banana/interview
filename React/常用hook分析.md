@@ -1,16 +1,8 @@
-# React技术揭秘读书笔记
+# React 常用 Hook分析
 
-## 理念篇
+Hook用于function组件中, 能够保持function组件的状态(与class组件中的state在性质上是相同的, 都是为了保持组件的状态)
 
-GUI渲染线程与JS线程是互斥的，16.6ms浏览器刷新一次。React把长任务拆到每一帧中运行（时间切片），每一帧预留5ms左右，剩余时间交由渲染UI。
-
-时间切片：将同步的更新变为可中断的异步更新。
-
-React16.8采用了Fiber架构，做到了可中断的执行对变化组件做update标记，该行为在内存中进行，等到完成后通知更新渲染
-
-## hook
-
-### useEffect/useLayoutEffect
+## useEffect/useLayoutEffect
 
 - useEffect
   - 异步非阻塞执行
@@ -22,7 +14,7 @@ React16.8采用了Fiber架构，做到了可中断的执行对变化组件做upd
 
 区别是：useEffect不会阻塞渲染，只有在涉及到修改 DOM、动画等场景下考虑使用 useLayoutEffect，所有的修改会一次性更新到浏览器中，减少用户体验上的不适。
 
-### useMemo/useCallback
+## useMemo/useCallback
 
 在源码中的直接体现就是：
 
@@ -50,7 +42,7 @@ function mountCallback<T>(callback: T, deps: Array<mixed> | void | null): T {
   // 创建并返回当前hook
   const hook = mountWorkInProgressHook();
   const nextDeps = deps === undefined ? null : deps;
-  // 将value与deps保存在hook.memoizedState
+  // 将callback与deps保存在hook.memoizedState
   hook.memoizedState = [callback, nextDeps];
   return callback;
 }
