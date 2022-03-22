@@ -1,6 +1,19 @@
-function Person() {}
+Promise.myAll = function (promises) {
+  return new Promise((resolve, reject) => {
+    let result = []
+    let count = 0
 
-const boy = new Person()
+    promises.forEach((promise, index) => {
+      promise
+        .then((val) => {
+          resolve[index] = val
+          count++
 
-console.log(boy)
-console.log(boy === Person.constructor)
+          if (count === promises.length) {
+            resolve(result)
+          }
+        })
+        .catch(reject)
+    })
+  })
+}
