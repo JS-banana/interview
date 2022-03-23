@@ -26,6 +26,8 @@
   - [x] [常用Hook分析](React/常用Hook分析.md.md)
 - Vue：能清晰阐述其运行逻辑和原理，初始化流程及响应式原理
 - webpack：能清晰阐述其运行逻辑和原理，生命周期流程
+  - [x] [Webpack构建流程及核心概念](Webpack/Webpack构建流程及核心概念.md)
+  - [x] [Webpack之Loader和Plugin](Webpack/Webpack之Loader和Plugin.md)
 - 浏览器
   - [x] [从输入URL到页面加载完成的过程](/浏览器/从输入URL到页面加载完成的过程.md)
   - [x] [JavaScript运行机制](/浏览器/JavaScript运行机制.md)
@@ -47,6 +49,7 @@
 - [x] 《图解网络-小林coding》
 - [x] 《React技术揭秘》
 - [x] 《图解React原理》
+- [ ] 《深入浅出Webpack》
 
 ## 推荐阅读
 
