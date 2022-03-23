@@ -47,6 +47,14 @@ react 运行的主干逻辑, 即将输入转换为输出的核心步骤, 实际�
     - 如 type 是一个`ReactComponent`类型, 则会调用其 `render` 方法获取子节点.
     - 如 type 是一个`function`类型,则会调用该方法获取子节点
 
+---
+
+- 开发人员能够控制的是JSX, 也就是ReactElement对象.
+- fiber树是通过ReactElement生成的, 如果脱离了ReactElement,fiber树也无从谈起. 所以是ReactElement树(不是严格的树结构, 为了方便也称为树)驱动fiber树.
+- fiber树是DOM树的数据模型, fiber树驱动DOM树
+
+开发人员通过编程只能控制ReactElement树的结构, ReactElement树驱动fiber树, fiber树再驱动DOM树, 最后展现到页面上. 所以fiber树的构造过程, 实际上就是ReactElement对象到fiber对象的转换过程
+
 ### ReactComponent对象
 
 对于ReactElement来讲, `ReactComponent`仅仅是诸多`type`类型中的一种.
