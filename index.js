@@ -1,19 +1,9 @@
-Promise.myAll = function (promises) {
-  return new Promise((resolve, reject) => {
-    let result = []
-    let count = 0
+Function.prototype.myCall = function (context) {
+  context = context || window
+  context.fn = this
+  var args = [...arguments].slice(1)
 
-    promises.forEach((promise, index) => {
-      promise
-        .then((val) => {
-          resolve[index] = val
-          count++
-
-          if (count === promises.length) {
-            resolve(result)
-          }
-        })
-        .catch(reject)
-    })
-  })
+  const result = context.fn(...args)
+  delete context.fn
+  return result
 }
