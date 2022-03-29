@@ -63,3 +63,4 @@
 - [100道 JavaScript 面试题，助你查漏补缺](https://juejin.cn/post/6992525007716876325)
 - [前端杂烩 - Web前端阅读资源汇总](https://juejin.cn/post/7069468539412807693)
 - [手写各种js](https://github.com/qianlongo/fe-handwriting)
+- [p7学习路线进阶资料](/整理/p7学习路线进阶资料.md)
