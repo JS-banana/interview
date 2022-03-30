@@ -6,7 +6,7 @@
 
 本项目主要围绕我自身的技术能力水平总结，因此，内容方面详细程度也不是完全的一致的，如有错误，欢迎指正。
 
-## 方向
+## TODO
 
 - JavaScript基础
   - [x] [执行上下文](JavaScript/执行上下文.md)
@@ -57,12 +57,37 @@
 - [x] 《图解React原理》
 - [ ] 《深入浅出Webpack》
 
+- [📚 开发者推荐阅读的书籍](https://github.com/guanpengchn/awesome-books)
+
 ## 推荐阅读
 
-- [面试宝库](/整理/一些不太全的知识点.md)
-- [做了一份前端面试复习计划，保熟～](https://juejin.cn/post/7061588533214969892)
-- [📚 开发者推荐阅读的书籍](https://github.com/guanpengchn/awesome-books)
-- [100道 JavaScript 面试题，助你查漏补缺](https://juejin.cn/post/6992525007716876325)
-- [前端杂烩 - Web前端阅读资源汇总](https://juejin.cn/post/7069468539412807693)
-- [手写各种js](https://github.com/qianlongo/fe-handwriting)
+### 面试整理系列
+
+主要是大家整理的比较优秀的关于面试的文章，常见知识点和八股文
+
+- [掘金13篇（每篇文章篇幅巨大、知识点齐全，建议反复学习）](https://juejin.cn/post/6940945178899251230)
+- [做了一份前端面试复习计划，保熟～，属于雨露均沾系列，很全面](https://juejin.cn/post/7061588533214969892)
+- [前端杂烩 - Web前端阅读资源汇总（文章内容极其多、全面，由浅入深）](https://juejin.cn/post/7069468539412807693)
 - [p7学习路线进阶资料](/整理/p7学习路线进阶资料.md)
+- [2021年前端面试必读文章【超三百篇文章/赠复习导图】](https://juejin.cn/post/6844904116339261447)
+
+### JS基础进阶
+
+主要围绕JS，包括基础巩固、进阶、原理剖析，手写实现等
+
+- [恺哥等众人的前端知识点合集（涵盖范围非常广泛，有一定深度，是进阶高级前端的必备合集）](https://juejin.cn/post/7017645909483716615)
+- [手写各种js](https://github.com/qianlongo/fe-handwriting)
+
+### 面试题系列
+
+- [100道 JavaScript 面试题，助你查漏补缺](https://juejin.cn/post/6992525007716876325)
+
+### 算法
+
+首先了解各数据结构的基本概念和形状，按照基础题、常规题、面试常见题路径逐步前进，急不来，为加深理解和印象可以对每个类型都反复刷些题。
+
+- [数据结构介绍（了解基本数据结构）](https://juejin.cn/post/7017349585446125575)
+- [labuladong 的算法小抄（刷题方法、思路学习）](https://labuladong.gitee.io/algo/)
+- [ssh 的 leetcode-javascript（算法经典题+题解分析）](https://github.com/sl1673495/leetcode-javascript)
+- [vortesnail 推荐的刷题顺序（可配合ssh 的 leetcode-javascript）](https://github.com/vortesnail/leetcode)
+- [afatcoder 的 LeetcodeTop（汇总各大互联网公司容易考察的高频leetcode题🔥）](https://github.com/afatcoder/LeetcodeTop)
