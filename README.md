@@ -13,6 +13,7 @@
   - [x] [作用域与闭包](JavaScript/作用域与闭包.md)
   - [x] [类型与判断与类型转换](JavaScript/类型与判断.md)
   - [x] [原型链（配合ES6的class一起食用更佳）](JavaScript/原型.md)
+  - [x] [JS各种手写实现（TODO）](JS各种手写实现/README.md)
 - ES6
   - [x] [块级作用域](ES6/块级作用域.md)
   - [x] [函数](ES6/函数.md)
@@ -56,7 +57,6 @@
 - [x] 《React技术揭秘》
 - [x] 《图解React原理》
 - [ ] 《深入浅出Webpack》
-
 - [📚 开发者推荐阅读的书籍](https://github.com/guanpengchn/awesome-books)
 
 ## 推荐阅读
@@ -70,6 +70,7 @@
 - [前端杂烩 - Web前端阅读资源汇总（文章内容极其多、全面，由浅入深）](https://juejin.cn/post/7069468539412807693)
 - [p7学习路线进阶资料](/整理/p7学习路线进阶资料.md)
 - [2021年前端面试必读文章【超三百篇文章/赠复习导图】](https://juejin.cn/post/6844904116339261447)
+- [大圣前端编程自学网](https://shengxinjing.cn/)
 
 ### JS基础进阶
 
