@@ -18,7 +18,7 @@ Promise.myAll = function (promises) {
     let count = 0
 
     promises.forEach((promise, index) => {
-      promise
+      Promise.resolve(promise)
         .then((val) => {
           resolve[index] = val // 确保按顺序输出
           count++
