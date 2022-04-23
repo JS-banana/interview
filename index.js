@@ -1,26 +1,18 @@
-function currying(fn) {
-  const initArgs = [].slice.call(arguments, 1)
-  let args = initArgs
-  console.log('args', args)
-  return function temp(...newargs) {
-    if (newargs.length) {
-      args = [...args, ...newargs]
-      return temp
-    } else {
-      let val = fn.apply(this, args)
-      args = initArgs
-      return val
-    }
-  }
-}
+import { useState } from 'react'
+export default function App() {
+  const [count, setState] = useState(0)
 
-// 验证
-
-function add(...args) {
-  //求和
-  return args.reduce((a, b) => a + b)
+  return (
+    <>
+      <button
+        onClick={() => {
+          setState(count + 1)
+          setState(count + 2)
+          setState(count + 3)
+        }}
+      >
+        state改变 count={count}
+      </button>
+    </>
+  )
 }
-let addCurry = currying(add, 2)
-console.log(addCurry(1)(2)(3)(4, 5)()) //17
-console.log(addCurry(1)(2)(3, 4, 5)()) //17
-console.log(addCurry(1)(2, 3, 4, 5)()) //17
