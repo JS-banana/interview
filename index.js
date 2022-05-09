@@ -1,18 +1,40 @@
-import { useState } from 'react'
-export default function App() {
-  const [count, setState] = useState(0)
+const middleware = []
 
-  return (
-    <>
-      <button
-        onClick={() => {
-          setState(count + 1)
-          setState(count + 2)
-          setState(count + 3)
-        }}
-      >
-        state改变 count={count}
-      </button>
-    </>
-  )
+const fn1 = async (ctx, next) => {
+  console.log('fn1-next前')
+  await next()
+  console.log('fn1-next后')
 }
+const fn2 = async (ctx, next) => {
+  console.log('fn2-next前')
+  await next()
+  console.log('fn2-next后')
+}
+const fn3 = async (ctx, next) => {
+  console.log('fn3-next前')
+  await next()
+  console.log('fn3-next后')
+}
+const fn4 = async (ctx, next) => {
+  console.log('fn4')
+}
+
+function use(fn) {
+  middleware.push(fn)
+}
+
+use(fn1)
+use(fn2)
+use(fn3)
+use(fn4)
+
+function run(ctx) {
+  function dispatch(i) {
+    let current = middleware[i]
+    if (!current) return
+    return current(ctx, dispatch.bind(null, i + 1))
+  }
+  return dispatch(0)
+}
+
+run({})
