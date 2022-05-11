@@ -1,40 +1,32 @@
-const middleware = []
+function validPalindrome(s) {
+  // 题目已说明最多删除一个字符
+  // 暴力思路：逐个删除，判断是否回文
+  // 优化思路：先按照对称比较判断，如果不对称，则删除一个字符，再判断
 
-const fn1 = async (ctx, next) => {
-  console.log('fn1-next前')
-  await next()
-  console.log('fn1-next后')
-}
-const fn2 = async (ctx, next) => {
-  console.log('fn2-next前')
-  await next()
-  console.log('fn2-next后')
-}
-const fn3 = async (ctx, next) => {
-  console.log('fn3-next前')
-  await next()
-  console.log('fn3-next后')
-}
-const fn4 = async (ctx, next) => {
-  console.log('fn4')
-}
+  let left = 0
+  let right = s.length - 1
 
-function use(fn) {
-  middleware.push(fn)
-}
+  const isPalindrome = (i, j) => s[i] === s[j]
 
-use(fn1)
-use(fn2)
-use(fn3)
-use(fn4)
+  let flag = false
 
-function run(ctx) {
-  function dispatch(i) {
-    let current = middleware[i]
-    if (!current) return
-    return current(ctx, dispatch.bind(null, i + 1))
+  while (left < right) {
+    if (s[left] != s[right]) {
+      if (!flag && isPalindrome(left, right - 1)) {
+        right = right - 1
+        flag = true
+      } else if (!flag && isPalindrome(left + 1, right)) {
+        left = left + 1
+        flag = true
+      } else {
+        return false
+      }
+    }
+    left++
+    right--
   }
-  return dispatch(0)
+
+  return true
 }
 
-run({})
+validPalindrome('ececabbacec')
