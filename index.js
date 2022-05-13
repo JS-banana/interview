@@ -1,32 +1,43 @@
-function validPalindrome(s) {
-  // 题目已说明最多删除一个字符
-  // 暴力思路：逐个删除，判断是否回文
-  // 优化思路：先按照对称比较判断，如果不对称，则删除一个字符，再判断
+/*
+ * @lc app=leetcode.cn id=20 lang=typescript
+ *
+ * [20] 有效的括号
+ */
 
+// @lc code=start
+function isValid(s) {
+  // 主要使用 栈 的数据结构来实现
   let left = 0
-  let right = s.length - 1
-
-  const isPalindrome = (i, j) => s[i] === s[j]
-
-  let flag = false
-
-  while (left < right) {
-    if (s[left] != s[right]) {
-      if (!flag && isPalindrome(left, right - 1)) {
-        right = right - 1
-        flag = true
-      } else if (!flag && isPalindrome(left + 1, right)) {
-        left = left + 1
-        flag = true
-      } else {
-        return false
-      }
-    }
-    left++
-    right--
+  let right = 0
+  const stark = []
+  const obj = {
+    ')': '(',
+    ']': '[',
+    '}': '{',
   }
 
-  return true
-}
+  for (let i = 0; i < s.length; i++) {
+    // 开始符号才入栈
+    if (Object.values(obj).includes(s[i])) {
+      // 入栈
+      stark.push(s[i])
+      left++
+    }
 
-validPalindrome('ececabbacec')
+    if (Object.keys(obj).includes(s[i])) {
+      if (stark.includes(obj[s[i]])) {
+        stark.pop()
+      }
+      right++
+    }
+  }
+
+  if (left !== right) {
+    return false
+  }
+
+  return !stark.length
+}
+// @lc code=end
+
+isValid('({{{{}}}))')
