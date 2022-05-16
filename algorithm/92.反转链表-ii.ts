@@ -18,34 +18,40 @@
  */
 
 function reverseBetween(head: ListNode | null, left: number, right: number): ListNode | null {
-    let dumy=head
-    let current=new ListNode(left)
+  let dumy = head
+  let current = new ListNode(left)
 
-    let p1=head
-    let p2=head
+  if (left === right) return dumy
 
-    if(left===right) return dumy
-
-    while(dumy&&dumy.next){
-        // left
-        if(dumy.val===left){
-            current=dumy.next
-            p1.next=null
-        }
-        if(dumy.val===right){
-            current.next=null
-            p2=dumy.next
-        }
-        dumy=dumy.next
+  while (dumy && dumy.next) {
+    // left
+    if (dumy.val === left) {
+      current = dumy.next
     }
-
-    let reverseCurrent=current
-    let cur=current
-    while(current&&current.next){
-        cur
-        current=current.next
+    if (dumy.val === right) {
+      current.next = null
     }
+    dumy = dumy.next
+  }
 
-};
+  // 反转链表
+  function reverse(curHead: ListNode | null) {
+    //
+    let prev = null
+    let next = curHead
+    let cur = curHead
+
+    while (cur) {
+      // 看一遍就理解，图解单链表反转
+      // https://juejin.cn/post/6844904058562543623
+      next = cur.next
+      cur.next = prev
+      prev = cur
+      cur = next
+    }
+    return prev
+  }
+
+  return reverse(current)
+}
 // @lc code=end
-
