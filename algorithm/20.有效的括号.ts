@@ -8,7 +8,7 @@
 function isValid(s: string): boolean {
   // 主要使用 栈 的数据结构来实现
   const stark = []
-  const obj = {
+  const obj: Record<string, string> = {
     ')': '(',
     ']': '[',
     '}': '{',
