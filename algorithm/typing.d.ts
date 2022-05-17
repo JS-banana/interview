@@ -15,3 +15,6 @@ declare class TreeNode {
   //   this.right = right === undefined ? null : right
   // }
 }
+
+// [374] 猜数字大小
+const guess = (T: number) => T
