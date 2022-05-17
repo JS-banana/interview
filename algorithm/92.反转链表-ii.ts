@@ -18,34 +18,48 @@
  */
 
 function reverseBetween(head: ListNode | null, left: number, right: number): ListNode | null {
-    let dumy=head
-    let current=new ListNode(left)
+  let dumy = head
+  let current = new ListNode(left)
 
-    let p1=head
-    let p2=head
+  if (left === right) return dumy
 
-    if(left===right) return dumy
-
-    while(dumy&&dumy.next){
-        // left
-        if(dumy.val===left){
-            current=dumy.next
-            p1.next=null
-        }
-        if(dumy.val===right){
-            current.next=null
-            p2=dumy.next
-        }
-        dumy=dumy.next
+  // 截取范围
+  while (dumy && dumy.next) {
+    // left
+    if (dumy.val === left) {
+      current.next = dumy
     }
-
-    let reverseCurrent=current
-    let cur=current
-    while(current&&current.next){
-        cur
-        current=current.next
+    if (dumy.val === right) {
+      current.next = null
     }
+    dumy = dumy.next
+  }
 
-};
+  // 链表反转
+  let prev = null
+  let cur = current
+  while (cur != null) {
+    let next = cur.next
+    cur.next = prev
+    prev = cur
+
+    // 移动指针
+    cur = next
+  }
+
+  let p = new ListNode(0)
+  p.next = dumy
+  while (dumy && dumy.next) {
+    // left
+    if (dumy.val === right) {
+      p.next = prev
+    }
+    if (dumy.val === left) {
+      p.next = dumy.next
+    }
+    dumy = dumy.next
+  }
+
+  return p.next
+}
 // @lc code=end
-
