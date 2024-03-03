@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>test</h1>
+</body>
+<script>
+  Function.prototype.myCall=function(context){
+    if(typeof this !=="function"){
+      return;
+    }
+
+    context = context || window;
+
+    const args = [...arguments].slice(1)
+    context.fn=this
+
+    const result=context.fn(...args)
+    delete context.fn
+    return result
+  }
+</script>
+</html>

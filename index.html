@@ -1,31 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <style>
-      .box {
-        height: 100px;
-      }
 
-      .box::after,
-      .box-center {
-        display: inline-block;
-        vertical-align: middle;
-      }
-      .box::after {
-        content: '';
-        height: 100%;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="box">
-      <div class="box-center">123</div>
-      <button disabled>button</button>
-    </div>
-    <script src="./index.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style>
+    .box {
+      height: 100px;
+    }
+
+    .box::after,
+    .box-center {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .box::after {
+      content: '';
+      height: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box">
+    <div class="box-center">123</div>
+    <button disabled>button</button>
+  </div>
+  <script src="./index.js"></script>
+
+
+  <script>
+    // function curry(fn, args = []) {
+    //   let length = fn.length
+    //   return function () {
+    //     let newArgs = [...args, ...arguments]
+    //     console.log('argments', arguments, newArgs)
+    //     if (newArgs.length < length) {
+    //       return curry.call(this, fn, newArgs)
+    //     } else {
+    //       return fn.apply(this, newArgs)
+    //     }
+    //   }
+    // }
+    // function multiFn(a, b, c) {
+    //   return a + b + c
+    // }
+
+    // console.log(multiFn.length)
+    // var multi = curry(multiFn);
+    // console.log(multi(2)(3)(4));
+    // console.log(multi(2, 3, 4));
+    // console.log(multi(2)(3, 4));
+    // console.log(multi(2, 3)(4));
+
+    let a = { a: 1, b: 2 }
+    let b = { a: 3, b: 4 }
+
+    const c = { ...a }
+    c.a = 8
+    console.log(a, c, a === c)
+
+  </script>
+</body>
+
 </html>
