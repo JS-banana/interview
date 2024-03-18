@@ -1,27 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
+
 <body>
   <h1>test</h1>
 </body>
 <script>
-  Function.prototype.myCall=function(context){
-    if(typeof this !=="function"){
+  Function.prototype.myCall = function (context) {
+    if (typeof this !== "function") {
       return;
     }
 
     context = context || window;
 
     const args = [...arguments].slice(1)
-    context.fn=this
+    context.fn = this
 
-    const result=context.fn(...args)
+    const result = context.fn(...args)
     delete context.fn
     return result
   }
+
+  // console.log('this', this)
+
+  // async function fn() {
+  //   while (true) {
+  //     console.log('开始输出')
+  //     await new Promise((resolve) => {
+  //       // resolve(true)
+  //       console.log('结果')
+  //     })
+  //     console.log('结束输出')
+  //   }
+  // }
+  // fn()
+
+  // function Fn() {
+  //   this.name = 'fn'
+  //   console.log('fn')
+  // }
+  // function Fnlast() {
+  //   this.name = 'last'
+  //   console.log('Fn')
+  // }
+  // Fn.prototype.getName = Fnlast
+
+
+  // const myFn = new new Fn().getName()
+  // console.log('myFn', myFn)
+
+  function parse(str, data) {
+    const getVal = (props, data) => {
+      const propArr = props.split('.')
+      return propArr.reduce((prev, cur) => {
+        return prev[cur]
+      }, data)
+    }
+    return str.replace(/\{\{(\d|\w|\.)+\}\}/g, match => {
+      // 匹配到 {{name}} 这种，需要把前后的大括号去掉
+      const props = match.substring(2, match.length - 2)
+      return getVal(props, data)
+    })
+  }
+
+  const data = {
+    name: 'lvzl',
+    date: {
+      year: '2023'
+    }
+  }
+  const str = '我们是好朋友，是吧{{name}}, 是十几单{{date.year}}'
+  str.replace(/\{\{(\d|\w|\.)+\}\}/g, match => {
+    console.log('=', match)
+    // // 匹配到 {{name}} 这种，需要把前后的大括号去掉
+    // const props = match.substring(2, match.length - 2)
+    // return getVal(props, data)
+  })
 </script>
+
 </html>
