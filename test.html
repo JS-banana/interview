@@ -54,33 +54,55 @@
   // const myFn = new new Fn().getName()
   // console.log('myFn', myFn)
 
-  function parse(str, data) {
-    const getVal = (props, data) => {
-      const propArr = props.split('.')
-      return propArr.reduce((prev, cur) => {
-        return prev[cur]
-      }, data)
-    }
-    return str.replace(/\{\{(\d|\w|\.)+\}\}/g, match => {
-      // 匹配到 {{name}} 这种，需要把前后的大括号去掉
-      const props = match.substring(2, match.length - 2)
-      return getVal(props, data)
-    })
-  }
+  // function parse(str, data) {
+  //   const getVal = (props, data) => {
+  //     const propArr = props.split('.')
+  //     return propArr.reduce((prev, cur) => {
+  //       return prev[cur]
+  //     }, data)
+  //   }
+  //   return str.replace(/\{\{(\d|\w|\.)+\}\}/g, match => {
+  //     // 匹配到 {{name}} 这种，需要把前后的大括号去掉
+  //     const props = match.substring(2, match.length - 2)
+  //     return getVal(props, data)
+  //   })
+  // }
 
-  const data = {
-    name: 'lvzl',
-    date: {
-      year: '2023'
+  // const data = {
+  //   name: 'lvzl',
+  //   date: {
+  //     year: '2023'
+  //   }
+  // }
+  // const str = '我们是好朋友，是吧{{name}}, 是十几单{{date.year}}'
+  // str.replace(/\{\{(\d|\w|\.)+\}\}/g, match => {
+  //   console.log('=', match)
+  //   // // 匹配到 {{name}} 这种，需要把前后的大括号去掉
+  //   // const props = match.substring(2, match.length - 2)
+  //   // return getVal(props, data)
+  // })
+  var name = "aaa";
+
+  const obj = {
+    name: "bbb",
+    fn1: function () {
+      console.log(this.name);
+    },
+    fn2: () => console.log(this.name),
+    fn3: function () {
+      return function () {
+        console.log(this.name);
+      };
+    },
+    fn4: function () {
+      return () => console.log(this.name);
     }
-  }
-  const str = '我们是好朋友，是吧{{name}}, 是十几单{{date.year}}'
-  str.replace(/\{\{(\d|\w|\.)+\}\}/g, match => {
-    console.log('=', match)
-    // // 匹配到 {{name}} 这种，需要把前后的大括号去掉
-    // const props = match.substring(2, match.length - 2)
-    // return getVal(props, data)
-  })
+  };
+  // obj.fn1();
+  // obj.fn2();
+  obj.fn3()();
+  obj.fn4()();
+
 </script>
 
 </html>
