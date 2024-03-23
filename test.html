@@ -11,20 +11,20 @@
   <h1>test</h1>
 </body>
 <script>
-  Function.prototype.myCall = function (context) {
-    if (typeof this !== "function") {
-      return;
-    }
+  // Function.prototype.myCall = function (context) {
+  //   if (typeof this !== "function") {
+  //     return;
+  //   }
 
-    context = context || window;
+  //   context = context || window;
 
-    const args = [...arguments].slice(1)
-    context.fn = this
+  //   const args = [...arguments].slice(1)
+  //   context.fn = this
 
-    const result = context.fn(...args)
-    delete context.fn
-    return result
-  }
+  //   const result = context.fn(...args)
+  //   delete context.fn
+  //   return result
+  // }
 
   // console.log('this', this)
 
@@ -81,28 +81,96 @@
   //   // const props = match.substring(2, match.length - 2)
   //   // return getVal(props, data)
   // })
-  var name = "aaa";
+  // var name = "aaa";
 
-  const obj = {
-    name: "bbb",
-    fn1: function () {
-      console.log(this.name);
-    },
-    fn2: () => console.log(this.name),
-    fn3: function () {
-      return function () {
-        console.log(this.name);
-      };
-    },
-    fn4: function () {
-      return () => console.log(this.name);
-    }
-  };
-  // obj.fn1();
-  // obj.fn2();
-  obj.fn3()();
-  obj.fn4()();
+  // const obj = {
+  //   name: "bbb",
+  //   fn1: function () {
+  //     console.log(this.name);
+  //   },
+  //   fn2: () => console.log(this.name),
+  //   fn3: function () {
+  //     return function () {
+  //       console.log(this.name);
+  //     };
+  //   },
+  //   fn4: function () {
+  //     return () => console.log(this.name);
+  //   }
+  // };
+  // // obj.fn1();
+  // // obj.fn2();
+  // obj.fn3()();
+  // obj.fn4()();
 
+
+  // const arr = [1, '2', true, { a: 1 }, ['小帅', '真帅']]
+
+
+  // const result = arr.map(item => {
+  //   if (typeof item === "object") {
+  //     if (Array.isArray(item)) {
+  //       item = [...item][0] = '大帅'
+  //     } else {
+  //       item = { ...item, a: 2 }
+  //     }
+  //   } else {
+  //     item = 0
+  //   }
+  //   return item
+  // })
+
+  // console.log('原始数组：', arr)
+  // console.log('新数组：', result)
+  // console.log(arr === result)
+
+  // const obj = {
+  //   length: 3,
+  //   0: 'a',
+  //   1: 'b',
+  //   2: 'c'
+  // }
+  // Array.prototype.map.call(obj, item => {
+  //   console.log(item)
+  //   return item
+  // })
+
+
+  /**
+* 链接一系列 Promise 处理程序。
+*
+* @param {array} arr——一个 Promise 处理程序列表，每个处理程序接收前一个处理程序解决的结果并返回另一个 Promise。
+* @param {*} input——开始调用 Promise 链的初始值
+* @return {Object}——由一系列 Promise 链接而成的 Promise
+*/
+  function quenceFn(arr, input) {
+    return arr.reduce((acc, cur) => acc.then(cur), Promise.resolve(10));
+  }
+
+  const p1 = v => new Promise(resolve => setTimeout(() => {
+    console.log('p1', v)
+    resolve(v * 2)
+  }, 1000))
+  const p2 = v => new Promise(resolve => setTimeout(() => {
+    console.log('p2', v)
+    resolve(v * 3)
+  }, 500))
+  const p3 = v => new Promise(resolve => setTimeout(() => {
+    console.log('p3', v)
+    resolve(v * 4)
+  }, 1500))
+
+  const promiseArr = [p1, p2, p3];
+  // quenceFn(promiseArr).then(r => console.log('result', r)); // 1200
+
+  function unique(arr) {
+    return arr.reduce((pre, cur) => {
+      return pre.includes(cur) ? pre : [...pre, cur]
+    }, []);
+  }
+
+  const arr = [0, 1, 1, 'a', 'b', 'b']
+  console.log(unique(arr)) // [0, 1, 'a', 'b']
 </script>
 
 </html>
