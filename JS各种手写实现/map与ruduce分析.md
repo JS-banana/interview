@@ -14,6 +14,8 @@
 4. 特别的地方？
 5. 我如何自己实现该方法？
 
+![emoji](https://cdn.jsdelivr.net/gh/JS-banana/images/emoji/3.jpg)
+
 ## JavaScript中的函数🤓
 
 在正式开始之前，有必要先说下JavaScript中的函数，简单了解下。
@@ -35,6 +37,8 @@
 请问，什么是高阶函数？
 
 答：简单来说，高阶函数（Higher Order Function）就是**一种以函数为参数的函数**。
+
+![emoji](https://cdn.jsdelivr.net/gh/JS-banana/images/emoji/2.jpg)
 
 ## Array.prototype.map()
 
@@ -366,6 +370,8 @@ const callbackfn = (arg1, arg2, arg3) => parseInt(arg1, arg2, arg3)
 ["1", "2", "3"].map(Number); // [1, 2, 3]
 ```
 
+![emoji](https://cdn.jsdelivr.net/gh/JS-banana/images/emoji/5.jpg)
+
 ## Array.prototype.reduce()
 
 ### 1. 它是什么？
@@ -686,7 +692,9 @@ quenceFn(promiseArr).then(r => console.log('result', r));
 
 ## 总结
 
-在本篇文章中，我们从概念定义、使用方式、函数特点、运行逻辑、手写实现等一步步学习，由浅入深，以这种系统性的方式从新认识了 `map` 和 `reduce` 这两位朋友，想必各位同学对其特点共性与区别一定有了全新的了解。当面试官再问及它们的区别时，我想这时你可以自信的回答了😎
+在本篇文章中，我们从概念定义、使用方式、函数特点、运行逻辑、手写实现等一步步学习，由浅入深，以这种系统性的方式从新认识了 `map` 和 `reduce` 这两位朋友，想必各位同学对其特点共性与区别一定有了全新的了解。当面试官再问及它们的区别时，希望你不要捂着嘴偷笑😄
+
+![emoji](https://cdn.jsdelivr.net/gh/JS-banana/images/emoji/6.jpg)
 
 文末，作为收尾，我们简单概括下这俩方法的区别：
 
@@ -703,6 +711,8 @@ quenceFn(promiseArr).then(r => console.log('result', r));
 1. `callbackFn` 函数被调用时，传入的参数有所区别，`map` 接收`数组中当前正在处理的元素`、`正在处理的元素在数组中的索引`等3个参数；`reduce` 接收`上一次调用 callbackFn 的结果`、`当前元素的值`等4个参数。
 2. 第二个参数不同，`map` 第二个参数可以指定执行 `callbackFn` 时用作 `this` 的值；`reduce` 第二个参数可以指定第一次调用回调时初始化 `accumulator` 的值
 3. 返回值不同，`map` 的返回值是一个新数组，它的每个元素都是回调函数的返回值；`reduce` 的返回值是使用“reducer”回调函数遍历整个数组后的结果，一个累加器。
+
+多说一句，其实对于 map、reduce以及ES6的一些方法等，有一种比较有效的学习方式，就是通过查看babel以及polyfill的转译，研究其降级代码的写法，学习其代码实现（比如ES6的class的继承，感兴趣的同学可以研究一下🤓）。
 
 ## 资料
 
