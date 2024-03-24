@@ -2,7 +2,7 @@
 
 想必各位都使用过 `map` 与 `reduce`，已知它们都是数组的实例方法。
 
-当面试官问及，他们的区别是什么时？你会如何作答？
+当面试官问及，他们的区别是什么时？你会如何作答？以及让你手写代码你又会如何实现呢？
 
 ## 前言
 
@@ -28,7 +28,7 @@
 
 答：在编程语言中，一等公民可以作为**函数参数**，可以作为**函数返回值**，也可以**赋值给变量**。
 
-对于 JavaScript 来说，函数可以赋值给变量，也可以作为函数参数，还可以作为函数返回值，因此 JavaScript 中函数是一等公民。
+对于 JavaScript 来说，函数可以赋值给变量，也可以作为函数参数，还可以作为函数返回值，因此 **JavaScript 中函数是一等公民**。
 
 ### 2. 高阶函数
 
@@ -39,6 +39,8 @@
 答：简单来说，高阶函数（Higher Order Function）就是**一种以函数为参数的函数**。
 
 ![emoji](https://cdn.jsdelivr.net/gh/JS-banana/images/emoji/2.jpg)
+
+小脑袋是不是有点痒痒的了😉，不要急，继续往下看~
 
 ## Array.prototype.map()
 
@@ -71,6 +73,28 @@ map的语法：`map(callbackFn [, thisArg])`
 - `Arrary.prototype.map.call(arr,callback)`
 
 不过，在ES6之后，对于集合类、类数组等也可以使用map遍历。其实，只要是内部实现了 `Symbol.iterator` 方法的可迭代对象，都可以被迭代遍历，它们同样可以被 `for...of循环`、`...展开语法`迭代。
+
+MDN官方是这样描述的：`map()` 方法是通用的。它只期望 `this` 值具有 `length` 属性和整数键属性。
+
+> 数组方法总是通用的——它们不访问数组对象的任何内部数据。它们只通过 `length` 属性和索引访问数组元素。这意味着它们也可以在类数组对象上调用
+
+```js
+const obj = {
+  length: 3,
+  0: 'a',
+  1: 'b',
+  2: 'c'
+}
+const result = Array.prototype.map.call(obj, item => {
+  console.log(item)
+  return item + 'c'
+})
+console.log(result)
+// a
+// b
+// c
+// ['ac', 'bc', 'cc']
+```
 
 以往我们写迭代基本都是通过 `for` 循环来实现，而 `map` 的函数式写法可以极大的简化和方便我们的代码编写。
 
@@ -234,7 +258,7 @@ Array.prototype.myMap = function (callback, thisArg) {
 }
 ```
 
-基本功能似乎没啥问题，但是看起来还是比较简陋的，查看官方文档 [ecma262](https://tc39.es/ecma262/#sec-array.prototype.map)，里面有对 map 的实现描述，发现细节还是蛮多的。
+基本功能似乎没啥问题，但是看起来还是比较简陋的，查看官方文档 [ecma262](https://tc39.es/ecma262/#sec-array.prototype.map)，里面有对 map 的实现描述，发现细节还是蛮多的，来结合规范优化下代码。
 
 ![ecma262-arrary-map](../static/images/ecma262-arrary-map.png)
 
@@ -369,6 +393,8 @@ const callbackfn = (arg1, arg2, arg3) => parseInt(arg1, arg2, arg3)
 // 实现上述目标更简单的方法，同时避免了“骗招”：
 ["1", "2", "3"].map(Number); // [1, 2, 3]
 ```
+
+是不是很有意思🤦‍♂️😉~
 
 ![emoji](https://cdn.jsdelivr.net/gh/JS-banana/images/emoji/5.jpg)
 
@@ -692,7 +718,7 @@ quenceFn(promiseArr).then(r => console.log('result', r));
 
 ## 总结
 
-在本篇文章中，我们从概念定义、使用方式、函数特点、运行逻辑、手写实现等一步步学习，由浅入深，以这种系统性的方式从新认识了 `map` 和 `reduce` 这两位朋友，想必各位同学对其特点共性与区别一定有了全新的了解。当面试官再问及它们的区别时，希望你不要捂着嘴偷笑😄
+在本篇文章中，我们从概念定义、使用方式、函数特点、运行逻辑、手写实现等一步步学习，由浅入深，以这种系统性的方式从新认识了 `map` 和 `reduce` 这两位朋友，想必各位同学对其特点共性与区别一定有了全新的了解。当面试官再问及它们的区别与实现时，希望你不要捂着嘴偷笑😄
 
 ![emoji](https://cdn.jsdelivr.net/gh/JS-banana/images/emoji/6.jpg)
 
