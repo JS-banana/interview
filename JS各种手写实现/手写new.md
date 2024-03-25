@@ -1,5 +1,7 @@
 # 面试官：说说 new 的过程
 
+本文为面试专题之JavaScript进阶——原理篇系列，手写new的实现。
+
 ## 介绍
 
 引用MDN的官方介绍，是这样定义 `new` 的：
@@ -59,7 +61,6 @@ console.log(son.sayName()); // 访问原型里的属性
 function myNew() {
   // 1. 获取构造函数（参数对象里的第一个）
   const constructor = [...arguments][0]
-  console.dir(constructor)
   // 2. 创建对象
   const obj = Object.create(constructor.prototype)
   // 3. 执行传入构造函数，并修改 this
@@ -94,7 +95,7 @@ console.log(son.sayName()); // 访问原型里的属性
 // 我的名字是：小帅
 ```
 
-其中 1 也可以这样写：
+其中步骤 2 也可以这样写：
 
 ```js
 // 1. __proto__
@@ -102,8 +103,21 @@ const obj = new Object()
 obj.__proto__ = constructor.prototype
 
 // 2. setPrototypeOf
-const obj = Object.create(null) // 指定原型链的终点null为其原型
+// 指定原型链的终点null为其原型
+const obj = Object.create(null) 
 const propto = constructor.prototype
+// setPrototypeOf方法可以把Object.create(null)指定null的创建强制修改原型
 Object.setPrototypeOf(obj, propto) 
-// setPrototypeOf方法可以把Object.create(null)强制修改原型
 ```
+
+## 总结
+
+简单来说，`new` 做的事情就是继承属性和方法，并改变`this`的上下文。
+
+其实，通过手写 `new` 的实现，你应该可以发现，针对本文 `new` 的创建过程这个问题，仔细思考下...
+
+我们完全可以把他看做是对原型链的一种考察，其中涉及的`构造函数`、`prototype`、`__proto__`、`Object.create`、`Object.setPrototypeOf` 等概念与方法，是不是又特别的熟悉呢？
+
+其实，只要弄懂了JavaScript的原型与继承，也就明白了本文的内容了~
+
+原型链的相关进阶文章请持续关注面试专栏的更新🙋‍♂️~
