@@ -53,7 +53,7 @@
 
 ## 看书
 
-- [ ] 《JavaScript高级程序设计》
+- [x] 《JavaScript高级程序设计》
 - [ ] 《你不知道的JavaScript》
 - [x] 《学习JavaScript数据结构与算法》
 - [ ] 《算法小抄》
@@ -75,6 +75,7 @@
 - [前端杂烩 - Web前端阅读资源汇总（文章内容极其多、全面，由浅入深）](https://juejin.cn/post/7069468539412807693)
 - [2021年前端面试必读文章【超三百篇文章/赠复习导图】](https://juejin.cn/post/6844904116339261447)
 - [月哥的前端学习路线（前端要努力）](https://www.processon.com/view/link/61c53fb31efad45a2b42afd9#map)
+- [前端基础、进阶两篇知识图谱，很全面，有解答，强烈推荐](https://www.yuque.com/helianthuswhite/ffahxc/tqg9tr)
 - [大圣前端编程自学网](https://shengxinjing.cn/)
 - [p7学习路线进阶资料](/整理/p7学习路线进阶资料.md)
 - [山月的面试集合](https://q.shanyue.tech/)
