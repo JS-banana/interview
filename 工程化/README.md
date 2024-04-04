@@ -11,3 +11,7 @@
 webpack：
 
 需要了解其运行流程、相关生命周期钩子函数，以及 plugins和 loaders的原理分析。
+
+## 资源
+
+- [带你入门前端工程](<https://github.com/woai3c/introduction-to-front-end-engineering>)
