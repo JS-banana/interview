@@ -1,141 +1,80 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html>
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <meta charset="utf-8">
+  <title></title>
+  <style>
+    .droptarget {
+      float: left;
+      width: 100px;
+      height: 35px;
+      margin: 15px;
+      padding: 10px;
+      border: 1px solid #aaaaaa;
+    }
+  </style>
 </head>
 
 <body>
-  <h1>test</h1>
+  <p>在两个矩形框中来回拖动 p 元素:</p>
+  <div class="droptarget">
+    <p draggable="true" id="dragtarget">拖动我!</p>
+  </div>
+  <div class="droptarget"></div>
+  <p style="clear:both;"><strong>注意：</strong>Internet Explorer 8 及更早 IE 版本或 Safari 5.1 及更早版本的浏览器不支持 drag 事件。</p>
+  <p id="demo"></p>
+  <script>
+    /* 拖动时触发*/
+    document.addEventListener("dragstart", function (event) {
+      //dataTransfer.setData()方法设置数据类型和拖动的数据
+      event.dataTransfer.setData("Text", event.target.id);
+      // 拖动 p 元素时输出一些文本
+      document.getElementById("demo").innerHTML = "开始拖动 p 元素.";
+      //修改拖动元素的透明度
+      event.target.style.opacity = "0.4";
+    });
+    //在拖动p元素的同时,改变输出文本的颜色
+    document.addEventListener("drag", function (event) {
+      document.getElementById("demo").style.color = "red";
+    });
+    // 当拖完p元素输出一些文本元素和重置透明度
+    document.addEventListener("dragend", function (event) {
+      document.getElementById("demo").innerHTML = "完成 p 元素的拖动";
+      event.target.style.opacity = "1";
+    });
+    /* 拖动完成后触发 */
+    // 当p元素完成拖动进入droptarget,改变div的边框样式
+    document.addEventListener("dragenter", function (event) {
+      if (event.target.className == "droptarget") {
+        event.target.style.border = "3px dotted red";
+      }
+    });
+    // 默认情况下,数据/元素不能在其他元素中被拖放。对于drop我们必须防止元素的默认处理
+    document.addEventListener("dragover", function (event) {
+      event.preventDefault();
+    });
+    // 当可拖放的p元素离开droptarget，重置div的边框样式
+    document.addEventListener("dragleave", function (event) {
+      if (event.target.className == "droptarget") {
+        event.target.style.border = "";
+      }
+    });
+    /*对于drop,防止浏览器的默认处理数据(在drop中链接是默认打开)
+ 复位输出文本的颜色和DIV的边框颜色
+ 利用dataTransfer.getData()方法获得拖放数据
+ 拖拖的数据元素id(“drag1”)
+ 拖拽元素附加到drop元素*/
+    document.addEventListener("drop", function (event) {
+      event.preventDefault();
+      if (event.target.className == "droptarget") {
+        document.getElementById("demo").style.color = "";
+        event.target.style.border = "";
+        var data = event.dataTransfer.getData("Text");
+        event.target.appendChild(document.getElementById(data));
+      }
+    });
+  </script>
 </body>
-<script>
-  // Function.prototype.myCall = function (context) {
-  //   if (typeof this !== "function") {
-  //     return;
-  //   }
-
-  //   context = context || window;
-
-  //   const args = [...arguments].slice(1)
-  //   context.fn = this
-
-  //   const result = context.fn(...args)
-  //   delete context.fn
-  //   return result
-  // }
-
-  // console.log('this', this)
-
-  // async function fn() {
-  //   while (true) {
-  //     console.log('开始输出')
-  //     await new Promise((resolve) => {
-  //       // resolve(true)
-  //       console.log('结果')
-  //     })
-  //     console.log('结束输出')
-  //   }
-  // }
-  // fn()
-
-  // function Fn() {
-  //   this.name = 'fn'
-  //   console.log('fn')
-  // }
-  // function Fnlast() {
-  //   this.name = 'last'
-  //   console.log('Fn')
-  // }
-  // Fn.prototype.getName = Fnlast
-
-
-  // const myFn = new new Fn().getName()
-  // console.log('myFn', myFn)
-
-  // function parse(str, data) {
-  //   const getVal = (props, data) => {
-  //     const propArr = props.split('.')
-  //     return propArr.reduce((prev, cur) => {
-  //       return prev[cur]
-  //     }, data)
-  //   }
-  //   return str.replace(/\{\{(\d|\w|\.)+\}\}/g, match => {
-  //     // 匹配到 {{name}} 这种，需要把前后的大括号去掉
-  //     const props = match.substring(2, match.length - 2)
-  //     return getVal(props, data)
-  //   })
-  // }
-
-  // const data = {
-  //   name: 'lvzl',
-  //   date: {
-  //     year: '2023'
-  //   }
-  // }
-  // const str = '我们是好朋友，是吧{{name}}, 是十几单{{date.year}}'
-  // str.replace(/\{\{(\d|\w|\.)+\}\}/g, match => {
-  //   console.log('=', match)
-  //   // // 匹配到 {{name}} 这种，需要把前后的大括号去掉
-  //   // const props = match.substring(2, match.length - 2)
-  //   // return getVal(props, data)
-  // })
-  // var name = "aaa";
-
-  // const obj = {
-  //   name: "bbb",
-  //   fn1: function () {
-  //     console.log(this.name);
-  //   },
-  //   fn2: () => console.log(this.name),
-  //   fn3: function () {
-  //     return function () {
-  //       console.log(this.name);
-  //     };
-  //   },
-  //   fn4: function () {
-  //     return () => console.log(this.name);
-  //   }
-  // };
-  // // obj.fn1();
-  // // obj.fn2();
-  // obj.fn3()();
-  // obj.fn4()();
-
-
-  // const arr = [1, '2', true, { a: 1 }, ['小帅', '真帅']]
-
-
-  // const result = arr.map(item => {
-  //   if (typeof item === "object") {
-  //     if (Array.isArray(item)) {
-  //       item = [...item][0] = '大帅'
-  //     } else {
-  //       item = { ...item, a: 2 }
-  //     }
-  //   } else {
-  //     item = 0
-  //   }
-  //   return item
-  // })
-
-  // console.log('原始数组：', arr)
-  // console.log('新数组：', result)
-  // console.log(arr === result)
-
-  const obj = {
-    length: 3,
-    0: 'a',
-    1: 'b',
-    2: 'c'
-  }
-  const result = Array.prototype.map.call(obj, item => {
-    console.log(item)
-    return item + 'c'
-  })
-
-  console.log(result)
-</script>
 
 </html>

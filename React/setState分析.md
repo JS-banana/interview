@@ -99,7 +99,7 @@ try {
 
 ### 原生事件 中的 setState
 
-1. 首页，原生事件不属于react的合成事件流，所以，不受react控制，是同步更新。
+1. 首先，原生事件不属于react的合成事件流，所以，不受react控制，是同步更新。
 
 ```js
 class App extends Component {
