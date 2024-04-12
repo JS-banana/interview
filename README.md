@@ -77,7 +77,7 @@
 
 主要是大家整理的比较优秀的关于面试的文章，常见知识点和八股文
 
-- [掘金13篇（每篇文章篇幅巨大、知识点齐全，建议反复学习）](https://juejin.cn/post/6940945178899251230)
+- [CUGGZ大佬整理的面经（每篇文章篇幅巨大、知识点齐全，建议反复学习）](https://www.yuque.com/cuggz)
 - [做了一份前端面试复习计划，保熟～（属于雨露均沾系列，很全面）](https://juejin.cn/post/7061588533214969892)
 - [前端杂烩 - Web前端阅读资源汇总（文章内容极其多、全面，由浅入深）](https://juejin.cn/post/7069468539412807693)
 - [2021年前端面试必读文章【超三百篇文章/赠复习导图】](https://juejin.cn/post/6844904116339261447)
@@ -107,3 +107,4 @@
 - [ssh 的 leetcode-javascript（算法经典题+题解分析）](https://github.com/sl1673495/leetcode-javascript)
 - [vortesnail 推荐的刷题顺序（可配合ssh 的 leetcode-javascript）](https://github.com/vortesnail/leetcode)
 - [afatcoder 的 LeetcodeTop（汇总各大互联网公司容易考察的高频leetcode题🔥）](https://github.com/afatcoder/LeetcodeTop)
+- [Hello 算法](https://www.hello-algo.com/)
