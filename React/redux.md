@@ -353,8 +353,8 @@ function connectAdvanced(selectorFactory, options) {
 
     // Connect 组件
     function ConnectFunction(props) {
-      const [propsContext, reactReduxForwardedRef, wrapperProps] =
-        useMemo(() => {
+      // 
+      const [propsContext, reactReduxForwardedRef, wrapperProps] = useMemo(() => {
           const { reactReduxForwardedRef, ...wrapperProps } = props
           return [props.context, reactReduxForwardedRef, wrapperProps]
         }, [props])
